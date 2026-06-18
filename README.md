@@ -1,50 +1,49 @@
 # Wholesale Distribution Analytics Platform
 
-## Project Overview
+## Overview
 
-The Wholesale Distribution Analytics Platform is a production-style analytics solution designed for medium-sized wholesale and distribution businesses operating across the United Kingdom.
+Production-style Analytics Engineering project simulating a wholesale distribution company operating across the United Kingdom.
 
-The platform provides a single source of truth for sales, inventory, supplier performance, customer performance, and warehouse operations through a governed analytics architecture.
+The project demonstrates:
 
-The project simulates a real-world consulting engagement where a wholesale company requires an end-to-end reporting solution using Python, PostgreSQL, and Power BI.
+* Data Modelling
+* Analytics Engineering
+* ETL Development
+* Data Quality Frameworks
+* PostgreSQL
+* Python
+* Power BI
+* Star Schema Design
+* KPI Governance
 
 ---
 
 ## Business Problem
 
-The company currently relies on disconnected spreadsheets and manual reporting processes.
+Wholesale businesses often rely on disconnected spreadsheets and manual reporting processes.
 
-Challenges include:
+This platform provides:
 
-* Lack of centralized reporting
-* Inconsistent KPI definitions
-* Limited inventory visibility
-* Poor supplier performance tracking
-* Delayed executive reporting
-* No data quality controls
-
----
-
-## Project Objectives
-
-* Create a centralized analytics platform
-* Implement dimensional modelling best practices
-* Automate data ingestion and transformation
-* Establish data quality controls
-* Build production-style reporting architecture
-* Deliver executive, operations, and supplier reporting
+* Single Source of Truth
+* Automated Data Processing
+* Centralized Reporting
+* Inventory Analytics
+* Supplier Performance Analytics
+* Executive Reporting
 
 ---
 
-## Success Criteria
+## Architecture
 
-* Automated ETL process
-* Star schema implementation
-* Data quality validation framework
-* Power BI semantic model
-* Executive dashboards
-* Operational dashboards
-* Supplier performance dashboards
+Source Systems
+↓
+Python ETL
+↓
+PostgreSQL Warehouse
+↓
+Power BI Semantic Model
+↓
+Executive Dashboards
 
 ---
 
@@ -53,18 +52,70 @@ Challenges include:
 * Python
 * PostgreSQL
 * Power BI
-* GitHub
 * Docker
+* GitHub
 
 ---
 
-## Project Phases
+## Core Features
 
-1. Business Analysis
-2. Data Modelling
-3. Data Generation
-4. ETL Development
-5. Data Quality Framework
-6. Warehouse Development
-7. Power BI Development
-8. Deployment & Documentation
+### Data Quality Framework
+
+Validation of:
+
+* Missing IDs
+* Duplicate Records
+* Invalid Dates
+* Negative Quantities
+
+---
+
+### Data Warehouse
+
+Dimensions:
+
+* Customer
+* Product
+* Supplier
+* Warehouse
+* Date
+
+Facts:
+
+* Sales
+* Inventory
+* Shipments
+
+---
+
+### Analytics
+
+KPIs:
+
+* Revenue
+* Profit
+* Margin
+* Inventory Turnover
+* Fill Rate
+* Lead Time
+
+---
+
+## Project Structure
+
+See repository structure for details.
+
+---
+
+## Future Enhancements
+
+* Microsoft Fabric
+* Forecasting Models
+* AI Insights
+* Automated Alerting
+
+---
+
+## Author
+
+Mubasher Ali
