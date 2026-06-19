@@ -1,0 +1,17 @@
+# Generated data
+data/raw/
+data/processed/
+
+# CSV files
+*.csv
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Mac
+.DS_Store
+
+# Notebooks
+.ipynb_checkpoints/
