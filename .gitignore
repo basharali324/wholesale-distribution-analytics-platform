@@ -15,3 +15,7 @@ __pycache__/
 
 # Notebooks
 .ipynb_checkpoints/
+
+.DS_Store
+data/.DS_Store
+sql/.DS_Store
