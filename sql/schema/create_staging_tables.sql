@@ -101,3 +101,62 @@ CREATE TABLE staging.order_lines (
     discount_pct NUMERIC(5,2)
 
 );
+
+
+/*
+Purpose:
+Inventory Snapshot Staging Table
+*/
+
+CREATE TABLE IF NOT EXISTS staging.inventory_snapshot
+(
+    snapshot_date DATE NOT NULL,
+
+    product_id VARCHAR(50) NOT NULL,
+
+    warehouse_id VARCHAR(50) NOT NULL,
+
+    on_hand_qty INTEGER NOT NULL CHECK (on_hand_qty >= 0),
+
+    reserved_qty INTEGER NOT NULL CHECK (reserved_qty >= 0),
+
+    available_qty INTEGER NOT NULL CHECK (available_qty >= 0),
+
+    inventory_value NUMERIC(18,2) NOT NULL CHECK (inventory_value >= 0)
+);
+
+
+/*
+Purpose:
+Order Lifecycle Staging Table
+
+Source:
+data/raw/order_lifecycle.csv
+
+Grain:
+One row per Order
+
+Author:
+Mubasher Ali
+*/
+
+CREATE TABLE IF NOT EXISTS staging.order_lifecycle
+(
+    order_id VARCHAR(50) NOT NULL,
+
+    customer_id VARCHAR(50) NOT NULL,
+
+    warehouse_id VARCHAR(50) NOT NULL,
+
+    order_date DATE NOT NULL,
+
+    approval_date DATE,
+
+    pick_date DATE,
+
+    ship_date DATE,
+
+    delivery_date DATE,
+
+    order_status VARCHAR(50) NOT NULL
+);
