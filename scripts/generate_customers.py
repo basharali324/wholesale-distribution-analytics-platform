@@ -1,10 +1,12 @@
 from faker import Faker
 import pandas as pd
-import numpy as np
 from pathlib import Path
 import random
 
+# Reproducible dataset
+random.seed(42)
 fake = Faker("en_GB")
+Faker.seed(42)
 
 NUM_CUSTOMERS = 100_000
 
@@ -38,9 +40,9 @@ ACCOUNT_MANAGERS = [
 ]
 
 
-def generate_customer():
+def generate_customer(customer_num):
     return {
-        "CustomerID": f"CUST-{random.randint(100000,999999)}",
+        "CustomerID": f"CUST-{customer_num:06d}",
         "CustomerName": fake.company(),
         "CustomerType": random.choice(CUSTOMER_TYPES),
         "Region": random.choice(REGIONS),
@@ -55,20 +57,32 @@ def generate_customer():
 
 
 customers = [
-    generate_customer()
-    for _ in range(NUM_CUSTOMERS)
+    generate_customer(i)
+    for i in range(1, NUM_CUSTOMERS + 1)
 ]
 
 df = pd.DataFrame(customers)
 
+# Data Quality Checks
+assert len(df) == NUM_CUSTOMERS, \
+    f"Expected {NUM_CUSTOMERS:,} customers but found {len(df):,}"
+
+assert df["CustomerID"].is_unique, \
+    "Duplicate Customer IDs detected"
+
 output_folder = Path("data/raw")
-output_folder.mkdir(parents=True, exist_ok=True)
+output_folder.mkdir(
+    parents=True,
+    exist_ok=True
+)
 
 df.to_csv(
     output_folder / "customers.csv",
     index=False
 )
 
-print(
-    f"{len(df):,} customers generated"
-)
+print("=" * 50)
+print(f"Customers Generated : {len(df):,}")
+print(f"Unique Customer IDs : {df['CustomerID'].nunique():,}")
+print("Customer Generation Successful")
+print("=" * 50)
