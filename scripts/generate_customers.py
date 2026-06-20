@@ -38,9 +38,9 @@ ACCOUNT_MANAGERS = [
 ]
 
 
-def generate_customer(i):
+def generate_customer():
     return {
-        "CustomerID": f"CUST-{i:06}",
+        "CustomerID": f"CUST-{random.randint(100000,999999)}",
         "CustomerName": fake.company(),
         "CustomerType": random.choice(CUSTOMER_TYPES),
         "Region": random.choice(REGIONS),
@@ -55,9 +55,8 @@ def generate_customer(i):
 
 
 customers = [
-    generate_customer(i)
-    for i in range(1,
-                   NUM_CUSTOMERS+1)
+    generate_customer()
+    for _ in range(NUM_CUSTOMERS)
 ]
 
 df = pd.DataFrame(customers)
